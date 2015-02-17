@@ -2,6 +2,9 @@
 
 var MyApp = new Backbone.Marionette.Application();
 var message = Backbone.Model.extend({
+	defaults: {
+	    contenu: ''
+	  }
 
 });
 var messages = Backbone.Collection.extend({
@@ -10,17 +13,20 @@ var messages = Backbone.Collection.extend({
 
 var  formView = Backbone.Marionette.ItemView.extend({
 	template: "#formMessage",
+	
 	events: {
     'submit form': 'submit'
   	},
   	ui: {
   		newTodo : "#newTodo"
   	},
+  	// model:message,
   	submit: function(){
   		console.log($("#newTodo").val());
   		this.model.set({
       	contenu: this.ui.newTodo.val(),
     	});
+    	consol.log(this.model.get('contenu'));
     e.preventDefault();
   	}
 });
@@ -53,20 +59,26 @@ var listeMessageView = Backbone.Marionette.CompositeView.extend({
 
 MyApp.addRegions
 ({
-  mainRegion: "#content"
+  mainRegion: "#content",
+  formRegion: "#form"
 });
 
 MyApp.addInitializer(function(options){
 		console.log(options.foo);
+		var myMessage = new message({});
+		var messageCollection = new messages({});
 		var view1 = new formView({
-
+			 
+			model: myMessage,
+			collection: messageCollection
 		});
-		$('body')
-    	.append(view1.render().el);
 		var mesMessages = new listeMessageView({
 		collection: options.foo
+		// collection: messageCollection
 		});
 		MyApp.mainRegion.show(mesMessages);
+		MyApp.formRegion.show(view1);
+
 
 });
 console.log('ceci est un message de test')
