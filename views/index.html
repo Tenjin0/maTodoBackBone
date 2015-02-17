@@ -1,0 +1,66 @@
+<html>
+   <head>
+
+        <title>Ma todolist</title>
+        <style>
+            a {text-decoration: none; color: black;}
+        </style>
+
+    </head>
+    <body>
+    	<div id="content"></div>
+       <!--  <form action="/todo/ajouter" method="post">
+            <p>
+                <label for="newTodo">Que dois-je faire ?</label>
+                <input type="text" name="newTodo" id="newTodo" autofocus />
+                <input type="submit" />
+            </p>
+        </form> -->
+
+    </body>
+
+    	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	    <script src="./javascripts/underscore.js"></script>
+	    <script src="./javascripts/backbone.js"></script>
+	    <script src="./javascripts/handlebars-v3.0.0.js"></script>
+	    <script src="./javascripts/backbone.marionette.js"></script>
+		<script src="/javascripts/maTodoBackBone.js"></script>
+
+		<script id="formView" type="text/x-handlebars-template"></script>
+		<script type="text/template" id="formMessage">
+
+			<form role="form">
+	            <div class="form-group">
+	                <label for="newTodo">Que dois-je faire ?</label>
+	                <input type="text" name="newTodo" id="newTodo" autofocus />
+	            </div>
+	               <button type="submit" class="btn btn-default">Envoyer</button>
+	        </form>
+		</script>
+
+
+		<script type="text/template" id="liste-message-template">
+				<h1> ma Todoliste </h1>
+				<ul></ul>
+	 	</script>
+	 	<script type="text/template" id="message-template">
+				<p><a href="#" class="delete">✘</a><%= contenu %>{{contenu}}<p>
+	 	</script>
+
+
+
+
+		<script type="text/template" id="angry_cats-template">
+		  <thead>
+		    <tr class='header'>
+		      <th>Name</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  </tbody>
+		</script>
+
+		<script type="text/template" id="angry_cat-template">
+		  <td><%= name %></td>
+
+</html>

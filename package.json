@@ -1,0 +1,19 @@
+{
+  "name": "maTodoList",
+  "version": "1.0.0",
+  "description": "maTodoList with coffeeScript, backbone marionette and handlebars.",
+  "main": "maTodoList.js",
+  "dependencies": {
+    "nodemon": "^1.3.7"
+  },
+  "repository": {
+  "type": "git",
+  "url": "git@github.com:Tenjin0/maTodoList.git"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tenji",
+  "license": "MIT"
+}
