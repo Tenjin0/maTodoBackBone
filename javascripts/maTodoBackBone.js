@@ -1,92 +1,59 @@
 
 
-var MyApp = new Backbone.Marionette.Application();
-var message = Backbone.Model.extend({
-	defaults: {
-	    contenu: ''
-	  }
+var MyApp = new Marionette.Application();
 
-});
-var messages = Backbone.Collection.extend({
-	model: message
+var Message = Backbone.Model.extend();
+
+var Messages = Backbone.Collection.extend({
+	model: Message
 });
 
-var  formView = Backbone.Marionette.ItemView.extend({
-	template: "#formMessage",
-	
-	events: {
-    'submit form': 'submit'
-  	},
-  	ui: {
-  		newTodo : "#newTodo"
-  	},
-  	// model:message,
-  	submit: function(){
-  		console.log($("#newTodo").val());
-  		this.model.set({
-      	contenu: this.ui.newTodo.val(),
-    	});
-    	consol.log(this.model.get('contenu'));
-    e.preventDefault();
-  	}
-});
-var  messageView = Backbone.Marionette.ItemView.extend({
-		//template: Handlebars.compile($("#message-template").html()),
-		template: "#message-template",
-		tagName: 'li',
-		className: 'message',
+var  MessageView = Marionette.ItemView.extend({
+		template: Handlebars.compile($("#message-template").html()),
+
 		events: {
     		'click .delete': 'deleteMessage'
   		},
+  		// onShow: function() {
+    //   		console.log("onShow", this)
+   	// 	},
   		deleteMessage: function(){
-  			console.log('appuie sur delete',this.model)
     		this.model.destroy();
   		}
 });
 
-var listeMessageView = Backbone.Marionette.CompositeView.extend({
-		tagName: "ul",
-		id: "liste-message",
-		className: "messages",
-		template: "#liste-message-template",
-		//template: Handlebars.compile($("#liste-message-template").html()),
-		itemView: messageView,
+var ListeMessageView = Marionette.CompositeView.extend({
+		template: Handlebars.compile($("#formMessage").html()),
 
-	appendHtml: function(collectionView, itemView){
-    	collectionView.$("ul").append(itemView.el);
-	}
+		childView: MessageView,
+		childViewContainer: "#content",
+
+		events: {
+	    'click button': 'ajouter'
+	  	},
+
+	  	ajouter: function(){
+	  		this.collection.add(
+	  		{
+	  			contenu: this.$('#newTodo').val()
+	  		});
+	  		console.log('collection', this.collection);
+	  		this.ui.newTodo.val("");
+	  	}
 });
 
 MyApp.addRegions
 ({
-  mainRegion: "#content",
   formRegion: "#form"
 });
 
-MyApp.addInitializer(function(options){
-		console.log(options.foo);
-		var myMessage = new message({});
-		var messageCollection = new messages({});
-		var view1 = new formView({
-			 
-			model: myMessage,
-			collection: messageCollection
-		});
-		var mesMessages = new listeMessageView({
-		collection: options.foo
-		// collection: messageCollection
-		});
-		MyApp.mainRegion.show(mesMessages);
-		MyApp.formRegion.show(view1);
-
-
+MyApp.addInitializer(function(){
+		MyApp.messageCollection = new Messages();
+		MyApp.formRegion.show(
+			new ListeMessageView({
+				collection: MyApp.messageCollection
+			})
+		);
 });
-console.log('ceci est un message de test')
-$(document).ready(function(){
-	  var mess = new messages([
-	    { contenu: 'Apprendre coffee Script' },
-	    { contenu: 'Adapter avec backBone' },
-	    { contenu: 'et avec marionette' }
-	  ]);
-	  MyApp.start({foo: mess});
-});
+
+  MyApp.start();

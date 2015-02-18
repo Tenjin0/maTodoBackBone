@@ -1,0 +1,58 @@
+<html>
+   <head>
+
+        <title>Ma todolist</title>
+        <style>
+            a {text-decoration: none; color: black;}
+        </style>
+		<script type="text/template" id="formMessage">
+
+			<form role="form">
+				<div class="form-group">
+					<label for="newTodo">Que dois-je faire ?</label>
+					<input type="text" name="newTodo" id="newTodo" autofocus />
+				</div>
+				<button type="submit" class="btn btn-default">Envoyer</button>
+			</form>
+	        <div id="content"></div>
+		</script>
+
+
+	 	<script type="text/x-handlebars-template" id="message-template">
+				<p><a href="#" class="delete">✘</a>{{this}} {{contenu}}</p>
+	 	</script>
+
+
+		<script type="text/template" id="angry_cats-template">
+		  <thead>
+		    <tr class='header'>
+		      <th>Name</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  </tbody>
+		</script>
+
+		<script type="text/template" id="angry_cat-template">
+		  <td><%= name %></td>
+		</script>
+    </head>
+    <body>
+    	index.hbs dans views
+    	<div id="form"></div>
+
+    	<script src= "./javascripts/coffee-script.js"> </script>
+    	<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+	    <script src="./javascripts/underscore.js"></script>
+	    <script src="./javascripts/backbone.js"></script>
+	    <script src="./javascripts/backbone.marionette.js"></script>
+	    <script src="./javascripts/handlebars-v3.0.0.js"></script>
+		<script src="./javascripts/maTodoBackBonePP.js"></script> -->
+		<!-- // <script type="text/coffeescript" src="./javascripts/maTodoBackBone.coffee"></script>  -->
+
+		<!-- <script id="formView" type="text/x-handlebars-template"></script> -->
+
+    </body>
+
+</html>
+

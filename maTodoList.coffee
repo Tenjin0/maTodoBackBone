@@ -1,18 +1,9 @@
-express = require 'express'
-hbs = require 'hbs'
-session = require 'cookie-session'
+http = require 'http'
+nodestatic = require 'node-static'
 
-app = express()
+web = new nodestatic.Server './javascripts'
 
-app.set 'view engine', 'html'
-app.engine 'html', hbs.__express
+server = http.createServer (request, response)->
+	request.addListener('end', -> web.serve request, response).resume();
 
-app.use(session(secret: 'todotopsecret'))
-
-app.get '/todo', (req, res) ->
-	res.render 'index'
-app.use("/javascripts", express.static(__dirname + "/javascripts"));
-app.use (req, res, next) ->
-	res.redirect '/todo'
-	next()
-.listen 8081
+server.listen 8081
