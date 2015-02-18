@@ -30,8 +30,8 @@ var FormView = Backbone.Marionette.ItemView.extend({
 
 var  MessageView = Backbone.Marionette.ItemView.extend({
 		//console.log('#message-template ->> ', $("#message-template").html()),
-		template: Handlebars.compile($("#message-template").html()),
-		//template: "#message-template",
+		//template: Handlebars.compile($("#message-template").html()),
+		template: "#message-template",
 		//tagName: 'li',
 		//className: 'message',
 		events: {
@@ -64,7 +64,7 @@ var ListeMessageView = Backbone.Marionette.CompositeView.extend({
   	// model:message,
   	ajouter: function(e){
   		// sconsole.log('newTodo', $("#newTodo"));
-  		this.collection.add({contenu: this.ui.newTodo.val()});
+  		this.collection.add(new Message({contenu: this.ui.newTodo.val()}));
   		console.log('collection', this.collection);
   		this.ui.newTodo.val("");
     	// console.log('ui', this.ui.newTodo.val());

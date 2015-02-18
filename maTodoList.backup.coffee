@@ -3,16 +3,15 @@
 express = require 'express'
 # hbs = require 'hbs'
 # handlebars = require 'handlebars'
-session = require 'cookie-session'
-
+# session = require 'cookie-session'
 
 exphbs = require 'express-handlebars'
 
 app = express()
-app.engine 'hbs', exphbs(
-  extname: 'hbs'
-  defaultLayout: 'index.hbs')
-app.set 'view engine', 'hbs'
+app.engine 'html', exphbs(
+  extname: 'html'
+  defaultLayout: 'index.html')
+app.set 'view engine', 'html'
 
 
 # app.engine'hbs', handlebars;
@@ -21,7 +20,7 @@ app.set 'view engine', 'hbs'
 # app.set 'view engine', 'html'
 # app.engine 'html', hbs.__express
 
-app.use(session(secret: 'todotopsecret'))
+# app.use(session(secret: 'todotopsecret'))
 
 app.get '/todo', (req, res) ->
 	res.render 'index'

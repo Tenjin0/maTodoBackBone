@@ -7,19 +7,22 @@
         </style>
 		<script type="text/template" id="formMessage">
 
+			<h1> ma Todoliste </h1>
 			<form role="form">
 				<div class="form-group">
 					<label for="newTodo">Que dois-je faire ?</label>
 					<input type="text" name="newTodo" id="newTodo" autofocus />
+					<button type="submit" class="btn btn-default">Envoyer</button>
 				</div>
-				<button type="submit" class="btn btn-default">Envoyer</button>
 			</form>
+</script>
 	        <div id="content"></div>
 		</script>
 
 
-	 	<script type="template" id="message-template">
-				<p><a href="#" class="delete">✘</a>{{this}} {{contenu}}</p>
+	 	<script type="text/template" id="message-template">
+	 			<%= contenu %><%= _.keys(this) %>
+				<p><a href="#" class="delete">✘</a>{{this}} {{contenu}}   </p>
 	 	</script>
 
 
@@ -38,17 +41,16 @@
 		</script>
     </head>
     <body>
-    	index.hbs dans views
+    	index.html dans layout
     	<div id="form"></div>
-
     	<script src= "./javascripts/coffee-script.js"> </script>
     	<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 	    <script src="./javascripts/underscore.js"></script>
 	    <script src="./javascripts/backbone.js"></script>
 	    <script src="./javascripts/backbone.marionette.js"></script>
 	    <script src="./javascripts/handlebars-v3.0.0.js"></script>
-		<script src="./javascripts/maTodoBackBonePP.js"></script> -->
-		<!-- // <script type="text/coffeescript" src="./javascripts/maTodoBackBone.coffee"></script>  -->
+		<!--<script src="./javascripts/maTodoBackBonePP.js"></script>-->
+		<script type="text/coffeescript" src="./javascripts/maTodoBackBone.coffee"></script>
 
 		<!-- <script id="formView" type="text/x-handlebars-template"></script> -->
 
