@@ -6,7 +6,7 @@
 
   nodestatic = require('node-static');
 
-  web = new nodestatic.Server('./javascripts');
+  web = new nodestatic.Server('./www');
 
   server = http.createServer(function(request, response) {
     return request.addListener('end', function() {

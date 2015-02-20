@@ -17,8 +17,8 @@
 		</script>
 
 
-	 	<script type="text/x-handlebars-template" id="message-template">
-				<p><a href="#" class="delete">✘</a><%=contenu%>{{this}} {{contenu}}</p>
+	 	<script type="text/template" id="message-template">
+				<p><a href="#" class="delete">✘</a><%=contenu%><%= _.keys(this)%>{{this}} {{contenu}}</p>
 	 	</script>
 
 
@@ -45,8 +45,7 @@
 	    <script src="./javascripts/underscore.js"></script>
 	    <script src="./javascripts/backbone.js"></script>
 	    <script src="./javascripts/backbone.marionette.js"></script>
-	    <script src="./javascripts/handlebars-v3.0.0.js"></script>
-	    <script src="./javascripts/hbs.js"></script>
+
 		<script src="./javascripts/maTodoBackBonePP.js"></script>
 
 		<!-- <script id="formView" type="text/x-handlebars-template"></script> -->
