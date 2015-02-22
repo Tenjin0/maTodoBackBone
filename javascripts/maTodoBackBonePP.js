@@ -30,7 +30,7 @@ var FormView = Backbone.Marionette.ItemView.extend({
 
 var  MessageView = Backbone.Marionette.ItemView.extend({
 		//console.log('#message-template ->> ', $("#message-template").html()),
-		//template: Handlebars.compile($("#message-template").html()),
+		// template: Handlebars.compile($("#message-template").html()),
 		template: "#message-template",
 		//tagName: 'li',
 		//className: 'message',
